@@ -1,5 +1,7 @@
 /.idea
+/venv
 TCP.iml
 *.mp4
 *.jpg
 *.pdf
+

@@ -317,27 +317,18 @@ def show_start_message():
     print("Hello, listened on %s:%d" % (IP, PORT))
 
 
-#assert len(sys.argv) == 2
-#PORT = int(sys.argv[1])
-# tcp
-server_tcp = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+server_tcp = socket.socket()
 server_tcp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 server_tcp.bind((IP, PORT))
 server_tcp.listen(1000)
-print("TCP server is running...")
-# udp
-server_udp = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-server_udp.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-server_udp.bind((IP, PORT))
-print("UDP server is running...")
 show_start_message()
 
 clients_pool = []
 waiting_clients = []
 
-inputs = [server_udp, server_tcp]
+inputs = [server_tcp]
 
 client_ID = 0
 process_pool = []
